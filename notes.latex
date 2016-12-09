@@ -1,3 +1,4 @@
+\newcommand{\wrap}[1]{#1}
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 $if(beamerarticle)$
 \usepackage{beamerarticle} % needs to be loaded first
@@ -26,7 +27,7 @@ $endif$
   \else
     \usepackage{fontspec}
   \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Ligatures={TeX, Common},Scale=MatchLowercase}
 $for(fontfamilies)$
   \newfontfamily{$fontfamilies.name$}[$fontfamilies.options$]{$fontfamilies.font$}
 $endfor$
@@ -60,30 +61,10 @@ $endif$
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
-\usepackage[unicode=true]{hyperref}
-$if(colorlinks)$
-\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-$endif$
-\hypersetup{
-$if(title-meta)$
-            pdftitle={$title-meta$},
-$endif$
-$if(author-meta)$
-            pdfauthor={$author-meta$},
-$endif$
-$if(keywords)$
-            pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
-$endif$
-$if(colorlinks)$
-            colorlinks=true,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
-            citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
-$else$
-            pdfborder={0 0 0},
-$endif$
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+\newcommand*{\hyperoptions}{colorlinks=true, linkcolor=[rgb]{1,0,0}, urlcolor=[RGB]{55,126,184}, citecolor=[rgb]{0,0.5,0},} %Blue is from colorbrewer
+\usepackage[unicode,pdfencoding=auto,final,\hyperoptions,hyperfootnotes=false,linktoc=all,pagebackref]{hyperref}
+\usepackage{backref}
+\usepackage[all]{hypcap} %Fixes hyperref caption links to tables and figures
 $if(lang)$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
