@@ -46,6 +46,8 @@ $endif$
 $if(mathfont)$
     \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
 $endif$
+\newfontfamily\skolararrows[StylisticSet=6]{Skolar PE} %Skolar Arrows
+\newcommand{\arrows}[1]{{\skolararrows #1}}
 $if(CJKmainfont)$
     \usepackage{xeCJK}
     \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
