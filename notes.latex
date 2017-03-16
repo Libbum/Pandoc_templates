@@ -101,6 +101,8 @@ $endif$
 $if(lhs)$
 \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
+%\usepackage[cachedir={/tmp/mintedcache}]{minted}
+%\usemintedstyle{manni}
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
