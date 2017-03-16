@@ -179,6 +179,7 @@ $if(dir)$
   \newenvironment{LTR}{\beginL}{\endL}
 \fi
 $endif$
+\newcommand*{\ten}[1]{\!\times\!10^{#1}}
 
 % set default figure placement to htbp
 \makeatletter
